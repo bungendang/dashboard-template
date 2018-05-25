@@ -90,7 +90,7 @@ export default {
     },
     postLogin () {
       var self = this
-      console.log('post login')
+      // console.log('post login')
       var data = {
         username: this.form.username,
         password: this.form.password
@@ -123,7 +123,7 @@ export default {
           this.invalidLogin = true
           setTimeout(() => {
             self.clearForm()
-            console.log('restart')
+            // console.log('restart')
           }, 1000)
           // console.log('error')
         })

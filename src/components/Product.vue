@@ -22,7 +22,7 @@ export default {
   },
   methods: {
     getData () {
-      console.log('asa')
+      // console.log('asa')
     }
   },
   mounted () {
