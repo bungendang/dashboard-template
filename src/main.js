@@ -4,7 +4,12 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
+// import VueMaterial from 'vue-material'
 import VueMaterial from 'vue-material'
+import 'vue-material/dist/vue-material.min.css'
+// import 'vue-material/dist/theme/default.css'
+
+// Vue.use(VueMaterial)
 import './assets/theme.scss'
 
 Vue.use(VueMaterial)
