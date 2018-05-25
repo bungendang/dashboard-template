@@ -68,14 +68,14 @@ export default {
         authData.token = localStorage.getItem('token')
       } else {
         // redirect to login
-        this.$router.push('/login')
+        // this.$router.push('/login')
       }
       // console.log(authData)
       // console.log('check login and token')
     }
   },
   mounted () {
-    this.checkLogin()
+    // this.checkLogin()
   }
 }
 </script>

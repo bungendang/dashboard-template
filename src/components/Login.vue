@@ -25,6 +25,7 @@
           </md-field>
         </md-card-content>
         <md-card-actions>
+          <div class="error-message" v-if="invalidLogin">Your username or password invalid</div>
           <md-button type="submit" class="md-primary" :disabled="sending">Login</md-button>
         </md-card-actions>
       </form>
@@ -42,6 +43,7 @@ import {
   minLength,
   maxLength
 } from 'vuelidate/lib/validators'
+
 export default {
   name: 'Login',
   mixins: [validationMixin],
@@ -50,7 +52,11 @@ export default {
       username: null,
       password: null
     },
-    sending: false
+    sending: false,
+    invalidLogin: false,
+    api: {
+      endpoint: 'http://localhost:3000/v1'
+    }
   }),
   validations: {
     form: {
@@ -80,23 +86,49 @@ export default {
       this.$v.$reset()
       this.form.username = null
       this.form.password = null
+      this.invalidLogin = false
     },
     postLogin () {
       var self = this
       console.log('post login')
-      //  post to backend
-      var token = 'asdasd'
-      var auth = {
-        status: true,
-        user_id: 'asoqiwejjjasi'
+      var data = {
+        username: this.form.username,
+        password: this.form.password
       }
-      localStorage.setItem('token', token)
-      localStorage.setItem('auth', JSON.stringify(auth))
+      //  post to backend
+      // var token = 'asdasd'
+      // var auth = {
+      //   status: true,
+      //   user_id: 'asoqiwejjjasi'
+      // }
       this.sending = true
       setTimeout(() => {
+        this.$http.post(this.api.endpoint + '/login', data).then(response => {
+          // success callback
+          var resp = response.body
+          localStorage.setItem('token', resp.token)
+          localStorage.setItem('auth', JSON.stringify({
+            status: true,
+            user_id: resp.user._id,
+            user_fullname: resp.user.fullname,
+            user_role: resp.user.role
+          }))
+          self.$router.push('/')
+          // console.log(response)
+        }, response => {
+          // error callback
+          // var e = self
+          console.log(self)
+          this.sending = false
+          this.invalidLogin = true
+          setTimeout(() => {
+            self.clearForm()
+            console.log('restart')
+          }, 1000)
+          // console.log('error')
+        })
         // alert("Hello");
-        self.$router.push('/')
-      }, 3000)
+      }, 1000)
       // console.log('hello')
     },
     validateUser () {
@@ -115,6 +147,9 @@ export default {
   img{
     border-radius:0px !important;
   }
+}
+.error-message{
+  color: red;
 }
 .login-container{
   text-align: center;
