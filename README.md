@@ -26,7 +26,3 @@ npm run e2e
 # run all tests
 npm test
 ```
-## Todo
-
-[] adding confirm on logout
-[] username / fullname on avatar menu clicked

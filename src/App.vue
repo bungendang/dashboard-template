@@ -44,6 +44,14 @@
         </md-menu-content>
       </md-menu>
     </div>
+    <md-dialog-confirm
+      :md-active.sync="confirmDialog"
+      md-title="Logout confirmation"
+      md-content="Are you sure want to logout?"
+      md-confirm-text="Yes"
+      md-cancel-text="Cancel"
+      @md-cancel="onCancel"
+      @md-confirm="onConfirm" />
     <router-view/>
   </div>
 </template>
@@ -53,14 +61,26 @@ export default {
   name: 'App',
   data () {
     return {
-      msg: 'Dashboard'
+      msg: 'Dashboard',
+      confirmDialog: false,
+      value: null
     }
   },
   methods: {
     logout: function () {
+      this.confirmDialog = true
+      // this.$router.push('/login')
+      // // console.log('hello')
+      // localStorage.clear()
+    },
+    onConfirm () {
+      // this.value = 'Agreed'
       this.$router.push('/login')
       // console.log('hello')
       localStorage.clear()
+    },
+    onCancel () {
+      // this.value = 'Disagreed'
     },
     checkLogin () {
       if (localStorage.getItem('token')) {
