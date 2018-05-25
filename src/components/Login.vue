@@ -1,6 +1,7 @@
 <template>
   <div class="login-container">
     <md-card class="login-form">
+      <md-progress-bar md-mode="indeterminate" v-if="sending"></md-progress-bar>
       <form novalidate @submit.prevent="validateUser">
         <md-card-content>
           <!-- <md-field>
@@ -78,6 +79,7 @@ export default {
       this.form.password = null
     },
     postLogin () {
+      var self = this
       console.log('post login')
       //  post to backend
       var token = 'asdasd'
@@ -87,7 +89,11 @@ export default {
       }
       localStorage.setItem('token', token)
       localStorage.setItem('auth', JSON.stringify(auth))
-      this.$router.push('/')
+      this.sending = true
+      setTimeout(() => {
+        // alert("Hello");
+        self.$router.push('/')
+      }, 3000)
       // console.log('hello')
     },
     validateUser () {

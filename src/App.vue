@@ -7,15 +7,21 @@
           </md-toolbar>
           <md-list>
             <md-list-item to="/">
-              <md-icon>move_to_inbox</md-icon>
+              <md-icon>dashboard</md-icon>
               <span class="md-list-item-text">Dashboard</span>
             </md-list-item>
+            <md-list-item to="/product">
+              <md-icon>archive</md-icon>
+              <span class="md-list-item-text">Product</span>
+            </md-list-item>
             <md-list-item md-expand>
-            <md-icon>settings</md-icon>
-            <span class="md-list-item-text">Settings</span>
+              <md-icon>settings</md-icon>
+              <span class="md-list-item-text">Settings</span>
               <md-list slot="md-expand">
                 <md-list-item to="/settings" class="md-inset">Settings</md-list-item>
-                <md-list-item class="md-inset">PC</md-list-item>
+                <md-list-item to="/user" class="md-inset">
+                  <span class="md-list-item-text">User</span>
+                </md-list-item>
                 <md-list-item class="md-inset">Phone</md-list-item>
               </md-list>
             </md-list-item>
@@ -64,8 +70,8 @@ export default {
         // redirect to login
         this.$router.push('/login')
       }
-      console.log(authData)
-      console.log('check login and token')
+      // console.log(authData)
+      // console.log('check login and token')
     }
   },
   mounted () {

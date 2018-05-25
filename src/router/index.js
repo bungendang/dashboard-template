@@ -5,6 +5,8 @@ import Dashboard from '@/components/Dashboard'
 import Login from '@/components/Login'
 import Settings from '@/components/Settings'
 import Profile from '@/components/Profile'
+import NotFound from '@/components/NotFound'
+import Product from '@/components/Product'
 
 Vue.use(Router)
 
@@ -29,6 +31,16 @@ export default new Router({
       path: '/profile',
       name: 'Profile',
       component: Profile
+    },
+    {
+      path: '/product',
+      name: 'Product',
+      component: Product
+    },
+    {
+      path: '*',
+      name: 'NotFound',
+      component: NotFound
     }
   ]
 })
