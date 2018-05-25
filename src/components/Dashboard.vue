@@ -5,13 +5,14 @@
         <span class="md-title">Dashboard</span>
       </md-app-toolbar>
 
-      <md-app-drawer md-permanent="full">
+      <!-- <md-app-drawer md-permanent="full">
         <md-toolbar class="md-transparent" md-elevation="0">
           <img src="../assets/logo.png">
         </md-toolbar>
 
         <md-list>
           <md-list-item>
+          <router-link to="/login">Login</router-link>
             <md-icon>move_to_inbox</md-icon>
             <span class="md-list-item-text">Inbox</span>
           </md-list-item>
@@ -31,7 +32,7 @@
             <span class="md-list-item-text">Spam</span>
           </md-list-item>
         </md-list>
-      </md-app-drawer>
+      </md-app-drawer> -->
 
       <md-app-content>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quibusdam, non molestias et! Earum magnam, similique, quo recusandae placeat dicta asperiores modi sint ea repudiandae maxime? Quae non explicabo, neque.</p>
