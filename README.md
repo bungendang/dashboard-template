@@ -28,5 +28,5 @@ npm test
 ```
 ## Todo
 
-- [] adding confirm on logout
-- [] username / fullname on avatar menu clicked
+[] adding confirm on logout
+[] username / fullname on avatar menu clicked
