@@ -3,6 +3,9 @@
     <md-card class="login-form">
       <md-progress-bar md-mode="indeterminate" v-if="sending"></md-progress-bar>
       <form novalidate @submit.prevent="validateUser">
+        <md-card-header>
+          <img src="../assets/logo.png" class="reponsive">
+        </md-card-header>
         <md-card-content>
           <!-- <md-field>
             <label>Username / Email</label>
@@ -108,6 +111,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
+.md-card-header{
+  img{
+    border-radius:0px !important;
+  }
+}
 .login-container{
   text-align: center;
   background-color: #EEE !important;
